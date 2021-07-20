@@ -17,13 +17,16 @@
 
 .app__input {
   box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
-  text-align: center;
   padding: 20px 0 20px 0;
   color: gray;
   width: 100%;
   border: none;
   outline: none;
   font-size: 30px;
+}
+
+.app__input::placeholder {
+  color: rgb(192, 185, 185);
 }
 
 .statistics {
@@ -58,7 +61,6 @@
 }
 
 .clearCompleted {
-  /* display: none; */
   border: 1px solid rgba(175, 47, 47, 0.2);
 }
 
@@ -66,15 +68,12 @@
   width: 50%;
 }
 
-
 .tasks {
   background-color: white;
 }
 
 .new_task {
-  /* background-color: white; */
   display: flex;
-  /* flex-flow: row wrap; */
   justify-content: space-between;
   box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
 }
@@ -112,39 +111,19 @@
   width: 40px;
   padding: 0;
   margin: auto 0;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;  ;
 }
-
-.icon {
-  position: absolute;
-  left: 10px;
-  color: #e6e6e6;
-  -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
-
-.icon::before {
-  position: relative;
-  left: 20px;
-  content: '❯';
-  font-size: 22px;
-  padding: 10px 27px 10px 27px;
-}
-
-.no_clicked {
-  color: #e6e6e6;
-}
-
-.clicked {
-  color: #737373;
-} 
 
 .label {
   line-height: 2.5;
   font-size: 28px;
-  /* width: 65%; */
   padding-left: 20px;
   color: gray;
+}
+
+.label_checked {
+  text-decoration: line-through;
+  color: rgb(177, 168, 168);
 }
 
 .span_delete {
@@ -154,8 +133,26 @@
   background-repeat: no-repeat;
 }
 
-::-webkit-input-placeholder {
-  opacity: 0.3;
-  color:gray;
-  font-size: 30px;
+.chooseAll {
+  width: 36px;
+  height: 36px;
+  margin: auto 0;
+  padding-right: 15px;
+  background-image: url(./images/down_no_click.svg);
+  background-repeat: no-repeat;
 }
+
+.chooseAll_clicked {
+  width: 36px;
+  height: 36px;
+  margin: auto 0;
+  padding-right: 15px;
+  background-image: url(./images/down_click.svg);
+  background-repeat: no-repeat;
+}
+
+.wrapForInput {
+  display: flex;
+  background-color: white;
+}
+
