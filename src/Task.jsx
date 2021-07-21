@@ -23,16 +23,31 @@ class Task extends React.Component {
         className="new_task"
       >
         <div className="wrapForTask">
-          <div className={checked} onClick={this.handleClickOnChoose} />
-          <label className={label}>{props.task.value}</label>
+          <div
+            role="button"
+            tabIndex="0"
+            aria-label="choose"
+            className={checked}
+            onClick={this.handleClickOnChoose}
+            onKeyPress={this.handleClickOnChoose}
+          />
+          <div className={label}>{props.task.value}</div>
         </div>
-        <div className="delete" onClick={this.handleClickOnDelete} />
+        <div
+          role="button"
+          tabIndex="0"
+          aria-label="delete"
+          className="delete"
+          onClick={this.handleClickOnDelete}
+          onKeyPress={this.handleClickOnDelete}
+        />
       </div>
     );
   }
 }
 
 Task.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   task: PropTypes.object.isRequired,
   deleteTask: PropTypes.func.isRequired,
   chooseTask: PropTypes.func.isRequired,

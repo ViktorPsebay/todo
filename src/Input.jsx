@@ -15,7 +15,14 @@ class InputDeal extends React.Component {
     const className = props.isAllChosen ? 'chooseAll chooseAll_clicked' : 'chooseAll';
     return (
       <div className="wrapForInput">
-        <div className={className} onClick={() => props.chooseAllTasks()} />
+        <div
+          role="button"
+          tabIndex="0"
+          aria-label="markAll"
+          className={className}
+          onClick={() => props.chooseAllTasks()}
+          onKeyPress={() => props.chooseAllTasks()}
+        />
         <form action="" onSubmit={this.handleSubmit}>
           <input
             className="app__input"

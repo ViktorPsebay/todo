@@ -145,6 +145,7 @@ class App extends React.Component {
               countOfActiveTasks={state.tasks.length - state.countOfCompletedTasks}
               countOfCompletedTasks={state.countOfCompletedTasks}
               deleteCompletedTasks={() => this.deleteCompletedTasks()}
+              view={state.view}
             />
           </div>
         </div>
