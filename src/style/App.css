@@ -104,17 +104,18 @@
 }
 
 .delete {
-  background-image: url(./images/cross_hover.svg);
+  /* background-image: url(./images/cross_hover.svg); */
   min-width: 20px;
   min-height: 20px;
   padding: 0;
   margin: auto 0;
   background-repeat: no-repeat;
-  display: none;
+  /* display: none; */
 }
 
 .new_task:hover > .delete {
-  display: block;
+  /* display: block; */
+  background-image: url(./images/cross_hover.svg);
 }
 
 .delete:hover {
