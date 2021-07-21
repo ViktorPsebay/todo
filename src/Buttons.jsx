@@ -6,7 +6,13 @@ function Buttons(props) {
   if (hidden) return null;
   return (
     <div className="button">
-      <button type="button" className={className} onClick={onClick}>{name}</button>
+      <button
+        type="button"
+        className={className}
+        onClick={onClick}
+      >
+        {name}
+      </button>
     </div>
   );
 }
