@@ -23,7 +23,11 @@ class InputDeal extends React.Component {
           onClick={() => props.chooseAllTasks()}
           onKeyPress={() => props.chooseAllTasks()}
         />
-        <form action="" onSubmit={this.handleSubmit}>
+        <form
+          action=""
+          onSubmit={this.handleSubmit}
+          className="form"
+        >
           <input
             className="app__input"
             type="text"

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Buttons(props) {
+function Button(props) {
   const { hidden, className, onClick, name } = props;
   if (hidden) return null;
   return (
@@ -17,15 +17,15 @@ function Buttons(props) {
   );
 }
 
-Buttons.propTypes = {
+Button.propTypes = {
   className: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   hidden: PropTypes.bool,
 };
 
-Buttons.defaultProps = {
+Button.defaultProps = {
   hidden: false,
 };
 
-export default Buttons;
+export default Button;

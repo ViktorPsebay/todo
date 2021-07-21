@@ -48,7 +48,10 @@ class Task extends React.Component {
 
 Task.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  task: PropTypes.object.isRequired,
+  task: PropTypes.shape({
+    value: PropTypes.string.isRequired,
+    complited: PropTypes.bool.isRequired,
+  }).isRequired,
   deleteTask: PropTypes.func.isRequired,
   chooseTask: PropTypes.func.isRequired,
 };

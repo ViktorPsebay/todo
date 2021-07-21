@@ -16,9 +16,14 @@
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
+.form {
+  width: 85%;
+  text-align: start;
+}
+
 .app__input {
   box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
-  padding: 20px 0 20px 0;
+  padding: 20px 0 20px 10px;
   color: gray;
   width: 100%;
   border: none;
@@ -89,7 +94,8 @@
   display: flex;
   justify-content: space-between;
   box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
-  padding-left: 10px;
+  padding: 10px;
+  text-align: start;
 }
 
 .wrapForTask {
@@ -97,14 +103,22 @@
   max-width: 100%; 
 }
 
-.new_task:hover > .delete {
-  
+.delete {
   background-image: url(./images/cross_hover.svg);
-  height: 40px;
-  width: 40px;
+  min-width: 20px;
+  min-height: 20px;
   padding: 0;
   margin: auto 0;
   background-repeat: no-repeat;
+  display: none;
+}
+
+.new_task:hover > .delete {
+  display: block;
+}
+
+.delete:hover {
+  cursor: pointer;
 }
 
 .no_checked {
@@ -122,11 +136,15 @@
 }
 
 .complete {
-  height: 40px;
-  width: 40px;
+  min-height: 40px;
+  min-width: 40px;
   padding: 0;
   margin: auto 0;
-  background-repeat: no-repeat;  ;
+  background-repeat: no-repeat;
+}
+
+.complete:hover {
+  cursor: pointer;
 }
 
 .label {
@@ -134,7 +152,7 @@
   font-size: 28px;
   padding-left: 20px;
   color: gray;
-  max-width: 70%;
+  min-width: 70%;
   word-break: break-all;
 }
 
@@ -182,6 +200,7 @@
 
 .app__input {
   font-size: medium;
+  /* width: 95%; */
 }
 
 .links {
@@ -196,5 +215,15 @@
 .label {
   font-size: medium;
 }
+}
 
+@media (max-width: 560px) {
+
+  .form {
+    width: 80%;
+  }
+
+  .app__input {
+    width: 95%;
+  }
 }

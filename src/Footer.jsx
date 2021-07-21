@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Buttons from './Buttons.jsx';
+import Button from './Button.jsx';
 import { modesOfView } from './consts.js';
 
 class Footer extends React.Component {
@@ -26,19 +26,19 @@ class Footer extends React.Component {
         <span className="count_items">{`${props.countOfActiveTasks} items lest`}</span>
 
         <div className="links">
-          <Buttons
+          <Button
             name="All"
             className={classNames.all}
             onClick={() => this.handleClick(modesOfView.ALL)}
           />
 
-          <Buttons
+          <Button
             name="Active"
             className={classNames.active}
             onClick={() => this.handleClick(modesOfView.ACTIVE)}
           />
 
-          <Buttons
+          <Button
             name="Completed"
             className={classNames.completed}
             onClick={() => this.handleClick(modesOfView.COMPLETED)}
@@ -46,7 +46,7 @@ class Footer extends React.Component {
         </div>
 
         <div className="links">
-          <Buttons
+          <Button
             hidden={!props.countOfCompletedTasks}
             name={`Clear completed[${props.countOfCompletedTasks}]`}
             className="notChosen"

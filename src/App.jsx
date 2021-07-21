@@ -16,9 +16,7 @@ class App extends React.Component {
   }
 
   setView(view) {
-    this.setState({
-      view,
-    });
+    this.setState({ view, });
   }
 
   deleteTask(task) {
@@ -32,9 +30,7 @@ class App extends React.Component {
       }));
     }
     tasks.splice(index, 1);
-    this.setState({
-      tasks,
-    });
+    this.setState({ tasks, });
   }
 
   deleteCompletedTasks() {
@@ -57,9 +53,7 @@ class App extends React.Component {
       complited: false,
       id: Math.random(),
     });
-    this.setState({
-      tasks,
-    });
+    this.setState({ tasks, });
   }
 
   chooseTask(task) {
@@ -82,9 +76,7 @@ class App extends React.Component {
       complited: !task.complited,
       id: task.id,
     });
-    this.setState({
-      tasks,
-    });
+    this.setState({ tasks, });
   }
 
   chooseAllTasks() {
