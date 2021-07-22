@@ -13,6 +13,24 @@ class Task extends React.Component {
     props.chooseTask(props.task);
   }
 
+  handleDoubleClick = (event) => {
+    const { props } = this;
+    const view = event.target;
+
+    view.contentEditable = true;
+    view.focus();
+
+    view.onkeydown = (event) => {
+      if (event.key === 'Enter') {
+        view.blur();
+      }
+    };
+
+    view.onblur = () => {
+      props.editTask(props.task, view.innerHTML);
+    };
+  }
+
   render() {
     const { props } = this;
     const checked = props.task.complited ? 'complete checked' : 'complete no_checked';
@@ -31,7 +49,7 @@ class Task extends React.Component {
             onClick={this.handleClickOnChoose}
             onKeyPress={this.handleClickOnChoose}
           />
-          <div className={label}>{props.task.value}</div>
+          <div className={label} onDoubleClick={this.handleDoubleClick}>{props.task.value}</div>
         </div>
         <div
           role="button"
@@ -47,13 +65,13 @@ class Task extends React.Component {
 }
 
 Task.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   task: PropTypes.shape({
     value: PropTypes.string.isRequired,
     complited: PropTypes.bool.isRequired,
   }).isRequired,
   deleteTask: PropTypes.func.isRequired,
   chooseTask: PropTypes.func.isRequired,
+  editTask: PropTypes.func.isRequired,
 };
 
 export default Task;

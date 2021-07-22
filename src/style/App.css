@@ -67,7 +67,6 @@
 
 .button button:hover {
   cursor: pointer;
-  /* border: 2px solid rgba(100, 87, 63, 0.2); */
 }
 
 .notChosen {
@@ -104,17 +103,14 @@
 }
 
 .delete {
-  /* background-image: url(./images/cross_hover.svg); */
   min-width: 20px;
   min-height: 20px;
   padding: 0;
   margin: auto 0;
   background-repeat: no-repeat;
-  /* display: none; */
 }
 
 .new_task:hover > .delete {
-  /* display: block; */
   background-image: url(./images/cross_hover.svg);
 }
 
@@ -155,6 +151,7 @@
   color: gray;
   min-width: 70%;
   word-break: break-all;
+  outline: none;
 }
 
 .label_checked {
@@ -201,7 +198,6 @@
 
 .app__input {
   font-size: medium;
-  /* width: 95%; */
 }
 
 .links {
@@ -216,6 +212,7 @@
 .label {
   font-size: medium;
 }
+
 }
 
 @media (max-width: 560px) {

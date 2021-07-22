@@ -102,6 +102,21 @@ class App extends React.Component {
     });
   }
 
+  editTask(task, value) {
+    const { tasks } = this.state;
+    const index = tasks.indexOf(task);
+    if (index === -1) return;
+
+    if (tasks[index].value === value) return;
+
+    tasks.splice(index, 1, {
+      value,
+      complited: task.complited,
+      id: task.id,
+    });
+    this.setState({ tasks, });
+  }
+
   render() {
     console.log(this.state);
     const { state } = this;
@@ -127,6 +142,7 @@ class App extends React.Component {
                   task={item}
                   deleteTask={(item) => this.deleteTask(item)}
                   chooseTask={(item) => this.chooseTask(item)}
+                  editTask={(item, value) => this.editTask(item, value)}
                 />
               );
             })}
