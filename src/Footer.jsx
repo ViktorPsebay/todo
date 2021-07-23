@@ -2,68 +2,51 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button.jsx';
 import { modesOfView } from './consts.js';
+import { useSelector, } from 'react-redux';
 
-class Footer extends React.Component {
-  handleClick = (filter) => {
-    const { props } = this;
-    props.changeFilter(filter);
-  }
+function Footer(props) {
+  const { countOfActiveTasks, countOfCompletedTasks } = props;
+  const view = useSelector(state => state.view);
+  const classNames = {
+    all: view === modesOfView.ALL ? 'chosen' : 'notChosen',
+    active: view === modesOfView.ACTIVE ? 'chosen' : 'notChosen',
+    completed: view === modesOfView.COMPLETED ? 'chosen' : 'notChosen',
+  };
+  return (
+    <div className="statistics">
+      <span className="count_items">{`${countOfActiveTasks} items lest`}</span>
 
-  handleClickOnClear = () => {
-    const { props } = this;
-    props.deleteCompletedTasks();
-  }
+      <div className="links">
+        <Button
+          name="all"
+          className={classNames.all}
+        />
 
-  render() {
-    const { props } = this;
-    const classNames = {
-      all: props.view === modesOfView.ALL ? 'chosen' : 'notChosen',
-      active: props.view === modesOfView.ACTIVE ? 'chosen' : 'notChosen',
-      completed: props.view === modesOfView.COMPLETED ? 'chosen' : 'notChosen',
-    };
-    return (
-      <div className="statistics">
-        <span className="count_items">{`${props.countOfActiveTasks} items lest`}</span>
+        <Button
+          name="active"
+          className={classNames.active}
+        />
 
-        <div className="links">
-          <Button
-            name="All"
-            className={classNames.all}
-            onClick={() => this.handleClick(modesOfView.ALL)}
-          />
-
-          <Button
-            name="Active"
-            className={classNames.active}
-            onClick={() => this.handleClick(modesOfView.ACTIVE)}
-          />
-
-          <Button
-            name="Completed"
-            className={classNames.completed}
-            onClick={() => this.handleClick(modesOfView.COMPLETED)}
-          />
-        </div>
-
-        <div className="links">
-          <Button
-            hidden={!props.countOfCompletedTasks}
-            name={`Clear completed[${props.countOfCompletedTasks}]`}
-            className="notChosen"
-            onClick={() => props.deleteCompletedTasks()}
-          />
-        </div>
+        <Button
+          name="completed"
+          className={classNames.completed}
+        />
       </div>
-    );
-  }
+
+      <div className="links">
+        <Button
+          hidden={!countOfCompletedTasks}
+          name={`Clear completed[${countOfCompletedTasks}]`}
+          className="notChosen"
+        />
+      </div>
+    </div>
+  );
 }
 
 Footer.propTypes = {
   countOfActiveTasks: PropTypes.number.isRequired,
   countOfCompletedTasks: PropTypes.number.isRequired,
-  changeFilter: PropTypes.func.isRequired,
-  deleteCompletedTasks: PropTypes.func.isRequired,
-  view: PropTypes.string.isRequired,
 };
 
 export default Footer;

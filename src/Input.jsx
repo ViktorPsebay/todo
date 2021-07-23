@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { addTask, chooseAllTasks } from './action';
+import { connect } from 'react-redux';
 
 class InputDeal extends React.Component {
   handleSubmit = (e) => {
@@ -46,4 +48,12 @@ InputDeal.propTypes = {
   isAllChosen: PropTypes.bool.isRequired,
 };
 
-export default InputDeal;
+const mapDispatchToProps = (dispatch) => ({
+  addTask: (filter) => dispatch(addTask(filter)),
+  chooseAllTasks: () => dispatch(chooseAllTasks()),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(InputDeal);

@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { chooseTask, deleteTask, editTask } from './action';
+import { connect } from 'react-redux';
 
 class Task extends React.Component {
   handleClickOnDelete = (event) => {
@@ -33,8 +35,8 @@ class Task extends React.Component {
 
   render() {
     const { props } = this;
-    const checked = props.task.complited ? 'complete checked' : 'complete no_checked';
-    const label = props.task.complited ? 'label label_checked' : 'label';
+    const checked = props.task.completed ? 'complete checked' : 'complete no_checked';
+    const label = props.task.completed ? 'label label_checked' : 'label';
 
     return (
       <div
@@ -67,11 +69,20 @@ class Task extends React.Component {
 Task.propTypes = {
   task: PropTypes.shape({
     value: PropTypes.string.isRequired,
-    complited: PropTypes.bool.isRequired,
+    completed: PropTypes.bool.isRequired,
   }).isRequired,
   deleteTask: PropTypes.func.isRequired,
   chooseTask: PropTypes.func.isRequired,
   editTask: PropTypes.func.isRequired,
 };
 
-export default Task;
+const mapDispatchToProps = (dispatch) => ({
+  chooseTask: (task) => dispatch(chooseTask(task)),
+  deleteTask: (task) => dispatch(deleteTask(task)),
+  editTask: (task, value) => dispatch(editTask(task, value)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Task);

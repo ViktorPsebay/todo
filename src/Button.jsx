@@ -1,15 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { modesOfView } from './consts';
+import { handleFilterButton } from './action/index.js';
 
 function Button(props) {
-  const { hidden, className, onClick, name } = props;
+  const { hidden, name } = props;
+  const dispatch = useDispatch();
+
+  const view = useSelector(state => state.view);
+
+  const classNames = {
+    all: view === modesOfView.ALL ? 'chosen' : 'notChosen',
+    active: view === modesOfView.ACTIVE ? 'chosen' : 'notChosen',
+    completed: view === modesOfView.COMPLETED ? 'chosen' : 'notChosen',
+  };
+
   if (hidden) return null;
   return (
     <div className="button">
       <button
         type="button"
-        className={className}
-        onClick={onClick}
+        className={classNames[name]}
+        onClick={() => dispatch(handleFilterButton(name))}
       >
         {name}
       </button>
@@ -18,9 +31,7 @@ function Button(props) {
 }
 
 Button.propTypes = {
-  className: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
   hidden: PropTypes.bool,
 };
 
