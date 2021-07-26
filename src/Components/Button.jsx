@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { modesOfView } from './consts';
-import { handleFilterButton } from './action/index.js';
+import { modesOfView } from '../consts';
+import { handleFilterButton } from '../store/actions.js';
 
 function Button(props) {
   const { hidden, name } = props;

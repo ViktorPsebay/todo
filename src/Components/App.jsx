@@ -1,11 +1,11 @@
-import { PropTypes } from 'prop-types';
-import './style/App.css';
 import React from 'react';
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
 import InputDeal from './Input.jsx';
 import Task from './Task.jsx';
 import Footer from './Footer.jsx';
-import { modesOfView } from './consts';
-import { connect } from 'react-redux';
+import { modesOfView } from '../consts';
+import '../style/App.css';
 
 class App extends React.Component {
   countCompletedTasks(tasks) {
@@ -54,7 +54,6 @@ class App extends React.Component {
 const mapStateToProps = (state) => ({
   view: state.view,
   tasks: state.tasks,
-  countOfCompletedTasks: state.countOfCompletedTasks,
 });
 
 App.propTypes = {

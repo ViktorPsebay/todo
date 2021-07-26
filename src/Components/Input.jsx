@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addTask, chooseAllTasks } from './action';
+import { addTask, chooseAllTasks } from '../store/actions';
 import { connect } from 'react-redux';
 
 class InputDeal extends React.Component {
@@ -9,6 +9,13 @@ class InputDeal extends React.Component {
     const { props } = this;
     props.addTask(e.target[0].value);
     e.target[0].value = '';
+  }
+
+  handleKeyDown = e => {
+    if (e.key === 'Escape') {
+      e.target.value = '';
+      e.target.blur();
+    }
   }
 
   render() {
@@ -34,10 +41,10 @@ class InputDeal extends React.Component {
             className="app__input"
             type="text"
             placeholder="What needs to be done"
+            onKeyDown={(e) => this.handleKeyDown(e)}
           />
         </form>
       </div>
-
     );
   }
 }

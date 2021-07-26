@@ -76,7 +76,6 @@ export const reducer = (state = defaultState, action) => {
 
     case typesOfAction.chooseTask: {
       const allTasks = chooseTask(action.payload, state.tasks);
-      console.log('allTasks', allTasks);
       return { ...state, tasks: allTasks };
     }
 

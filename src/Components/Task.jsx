@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { chooseTask, deleteTask, editTask } from './action';
+import { chooseTask, deleteTask, editTask } from '../store/actions';
 import { connect } from 'react-redux';
 
 class Task extends React.Component {
@@ -18,12 +18,16 @@ class Task extends React.Component {
   handleDoubleClick = (event) => {
     const { props } = this;
     const view = event.target;
-
     view.contentEditable = true;
     view.focus();
+    const initValueOfTask = view.innerHTML;
 
     view.onkeydown = (event) => {
       if (event.key === 'Enter') {
+        view.blur();
+      }
+      if (event.key === 'Escape') {
+        view.innerHTML = initValueOfTask;
         view.blur();
       }
     };
